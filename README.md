@@ -30,7 +30,7 @@ Make sure the directory `data` follows:
 
 [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html)
 
-[ImageNrtte]()
+[ImageNette]()
 
 
 Model Preparation
