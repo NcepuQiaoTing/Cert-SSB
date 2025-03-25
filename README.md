@@ -41,20 +41,20 @@ Make sure the directory `model` follows:
 
 [model]()
 
-Training Benign Model
+Training  Model
 -
-To train the benign model in the paper, run these commanding:
+To train the  model in the paper, run these commanding:
 
 GTSRB:
 
 ```
-python train_benign.py --dataset gtsrb
+python train.py --dataset gtsrb
 ```
 
 CIFAR-10:
 
 ```
-python train_benign.py --dataset cifar10
+python train.py --dataset cifar10
 ```
 
 
