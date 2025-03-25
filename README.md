@@ -5,3 +5,59 @@ This is the official implementation of our paper Cert-SSB: Toward Certified  Sam
 Pipeline
 -
 
+Reproducibilty Statement
+-
+We hereby only release the checkpoints and inference codes for reproducing our main results. We will release full codes (including the training process) of our methods upon the acceptance of this paper.
+
+Requirements
+-
+To install requirements：
+
+```
+pip install -r requirements.txt
+```
+
+Make sure the directory follows:
+
+
+Dataset Preparation
+-
+Make sure the directory `data` follows:
+
+📋 Data Download Link:
+[MNIST]()
+
+[CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html)
+
+[ImageNrtte]()
+
+
+Model Preparation
+-
+Make sure the directory `model` follows:
+
+📋 Model Download Link:
+
+[model]()
+
+Training Benign Model
+-
+To train the benign model in the paper, run these commanding:
+
+GTSRB:
+
+```
+python train_benign.py --dataset gtsrb
+```
+
+CIFAR-10:
+
+```
+python train_benign.py --dataset cifar10
+```
+
+
+
+
+
+
