@@ -25,6 +25,7 @@ Dataset Preparation
 Make sure the directory `data` follows:
 
 📋 Data Download Link:
+
 [MNIST]()
 
 [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html)
