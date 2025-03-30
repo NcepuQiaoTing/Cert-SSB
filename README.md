@@ -18,12 +18,34 @@ pip install -r requirements.txt
 ```
 
 Make sure the directory follows:
-
-
+```
+Certified Sample-Specific Backdoor Defense
+├── data
+│   ├── MNIST
+│   └── ...
+├── model
+│   ├── mnist
+│   └── ...
+├── sigma
+│   ├── mnist
+│   └── ...
+|
+```
 Dataset Preparation
 -
 Make sure the directory `data` follows:
-
+```
+data
+├── MNIST
+|   ├── train
+│   └── test
+├── Cifar 
+│   ├── train
+│   └── test
+├── ImageNet 
+│   ├── train
+│   └── test
+```
 📋 Data Download Link:
 
 [MNIST]()
@@ -36,6 +58,84 @@ Make sure the directory `data` follows:
 Model Preparation
 -
 Make sure the directory `model` follows:
+```
+model
+├── MNIST
+|   ├── onepixel
+|         ├── sigma0.12
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── sigma0.25
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── ...
+│   └── fourpixel
+|         ├── sigma0.12
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── sigma0.25
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── ...
+│   └── blending
+|         ├── sigma0.12
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── sigma0.25
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── ...
+├── Cifar 
+|   ├── onepixel
+|         ├── sigma0.12
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── sigma0.25
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── ...
+│   └── fourpixel
+|         ├── sigma0.12
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── sigma0.25
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── ...
+│   └── blending
+|         ├── sigma0.12
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── sigma0.25
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── ...
+├── ImageNet 
+|   ├── onepixel
+|         ├── sigma0.25
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── sigma0.5
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── ...
+│   └── fourpixel
+|         ├── sigma0.25
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── sigma0.5
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── ...
+│   └── blending
+|         ├── sigma0.25
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── sigma0.5
+|                 ├── smoothed_0.model
+│                 └── ...
+|         └── ...
+```
 
 📋 Model Download Link:
 
@@ -45,16 +145,73 @@ Training  Model
 -
 To train the  model in the paper, run these commanding:
 
-GTSRB:
+MNIST:
 
 ```
-python train.py --dataset gtsrb
+python train.py --dataset mnist --wm_shape onepixel --sigma 0.12 --N_m 1000
 ```
 
-CIFAR-10:
+CIFAR:
 
 ```
-python train.py --dataset cifar10
+python train.py --dataset cifar --wm_shape onepixel --sigma 0.12 --N_m 1000
+```
+
+ImageNet:
+
+```
+python train.py --dataset imagenet --wm_shape onepixel --sigma 0.25 --N_m 200
+```
+
+Eval
+-
+MNIST:
+
+```
+python eval.py --dataset mnist --wm_shape onepixel --sigma 0.12 --N_m 1000
+
+#sigma: 0.12, 0.25, 0.5, 1.0
+
+#wm_shape: onepixel, fourpixel, blending
+```
+
+CIFAR:
+
+```
+python eval.py --dataset cifar --wm_shape onepixel --sigma 0.12 --N_m 1000
+
+#sigma: 0.12, 0.25, 0.5, 1.0
+
+#wm_shape: onepixel, fourpixel, blending
+```
+
+ImageNet:
+
+```
+python eval.py --dataset imagenet --wm_shape onepixel --sigma 0.25 --N_m 200
+
+#sigma: 0.25, 0.5, 1.0
+
+#wm_shape: onepixel, fourpixel, blending
+```
+
+An Example of the Result
+-
+```
+python eval.py --dataset mnist --wm_shape onepixel --sigma 0.12 --N_m 1000
+
+result:
+
+Certified Radius: 0.0 / 0.25 / 0.5 / 0.75 / 1.0 / 1.25 / 1.5 / 1.75 / 2 / 2.25 / 2.5
+Cert acc: 0.99953 / 0.99433 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000
+Cert wm acc: 0.46288 / 0.46241 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000
+Cert acc: 0.99953 / 0.99433 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000
+Cond acc: 1.00000 / 1.00000 / nan / nan / nan / nan / nan / nan / nan / nan / nan
+Cert ratio: 0.99953 / 0.99433 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000
+Expected Cert acc: 0.99953 / 0.99716 / 0.52009 / 0.46099 / 0.44208 / 0.17778 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000
+Expected Cert wm acc: 0.46288 / 0.46241 / 0.46194 / 0.46052 / 0.43783 / 0.17920 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000
+Expected Cond acc: 0.99953 / 1.00000 / 1.00000 / 1.00000 / 1.00000 / 1.00000 / nan / nan / nan / nan / nan
+Expected Cert ratio: 1.00000 / 0.99716 / 0.52009 / 0.46099 / 0.44208 / 0.17778 / 0.00000 / 0.00000 / 0.00000 / 0.00000 / 0.00000
 ```
 
 
