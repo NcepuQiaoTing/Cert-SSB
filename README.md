@@ -151,7 +151,7 @@ MNIST:
 python train.py --dataset mnist --wm_shape onepixel --sigma 0.12 --N_m 1000
 ```
 
-CIFAR:
+CIFAR-10:
 
 ```
 python train.py --dataset cifar --wm_shape onepixel --sigma 0.12 --N_m 1000
@@ -175,7 +175,7 @@ python eval.py --dataset mnist --wm_shape onepixel --sigma 0.12 --N_m 1000
 #wm_shape: onepixel, fourpixel, blending
 ```
 
-CIFAR:
+CIFAR-10:
 
 ```
 python eval.py --dataset cifar --wm_shape onepixel --sigma 0.12 --N_m 1000
