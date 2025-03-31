@@ -139,7 +139,7 @@ model
 
 📋 Model Download Link:
 
-[model]()
+[model](https://www.dropbox.com/scl/fo/c6ra1l0kmnqutaxstz9zf/ADDuE5wHsSbC-1Ic25YhrSE?rlkey=zusj65tv9nmun1ddq8cu5pxrm&st=04dy11i4&dl=0)
 
 Training  Model
 -
